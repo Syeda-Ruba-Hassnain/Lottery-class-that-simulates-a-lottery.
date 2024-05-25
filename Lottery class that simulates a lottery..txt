@@ -1,0 +1,59 @@
+import java.util.Random;
+import java.util.Scanner;
+
+
+public class App {
+
+
+	public static void main(String[] args) {
+
+
+		Scanner keyBoard = new Scanner(System.in);
+		int size = 5;
+		Random random = new Random();
+		int[] user = new int[size];
+		int[] lottery = new int[size];
+		for (int i = 0; i < size; i++) {
+			lottery[i] = random.nextInt(10);
+		}
+
+
+		System.out.println("Enter " + size + " elements: ");
+		for (int i = 0; i < size; i++) {
+			user[i] = -1;
+			while (user[i] < 0) {
+				user[i] = keyBoard.nextInt();
+			}
+		}
+
+
+		int count = 0;
+		for (int i = 0; i < size; i++) {
+			if (user[i] == lottery[i]) {
+				count++;
+			}
+		}
+
+
+		System.out.println("\nLottery :");
+		for (int i = 0; i < size; i++) {
+			System.out.print(lottery[i] + " ");
+		}
+
+
+		System.out.println("\nUser :");
+		for (int i = 0; i < size; i++) {
+			System.out.print(user[i] + " ");
+		}
+
+
+		if (count == size) {
+			System.out.println("\nYou are the grand prize winner.");
+		} else {
+			System.out.println("\nThere are " + count + " matching digits");
+		}
+		keyBoard.close();
+
+
+	}
+}
